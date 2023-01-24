@@ -14,7 +14,7 @@
                 die("conection failed: " . $conn->conect_error);
             }
 
-            echo "conexion exitosa!";
+            //echo "conexion exitosa!";
         } 
         
         /*
