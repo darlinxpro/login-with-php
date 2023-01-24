@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-    include 'essentials.php';
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,19 +9,40 @@
 </head>
 <body>
     <?php   
-        conexion();
+        
+        if(isset($_POST['username'])){
+
+            $sql = "SELECT * FROM user_credentials WHERE name_user='".$_POST['username']."' AND pwd_user='".$_POST['pwd']."'";
+
+            $servername = "localhost";
+            $username = "root";
+            $pwd = "";
+            $dbname = "users";
+
+            $conn = new mysqli($servername, $username, $pwd, $dbname);
+            
+            $result = $conn->query($sql);
+
+            if(mysqli_num_rows($result) == 1 ){
+            echo "Has longeado Exitosamente!";
+        }
+
+        else {
+            echo "Incorrect Data..";
+        }
+    }
     ?>
 <div class="container">
         <!--  Login Master  -->
-        <form class="form" id="login">
+        <form class="form" id="login" method="POST" action="#">
             <h1 class="form__title">Login</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Username or Email">
+                <input type="text" class="form__input" name="username" autofocus placeholder="Username or Email">
                 <div class="form__input-error-message"></div>
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="password">
+                <input type="password" class="form__input" name="pwd" autofocus placeholder="password">
                 <div class="form__input-error-message"></div>
             </div>
             <button class="form__button" type="submit">Continue</button>
