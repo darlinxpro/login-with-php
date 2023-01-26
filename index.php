@@ -20,11 +20,11 @@ else {
 <body>
     <div class="container">
         <!--  Login Master  -->
-        <form class="form" id="login" method="POST" action="test.php">
+        <form class="form" id="login" method="POST" action="process.php">
             <h1 class="form__title">Login</h1>
             <div class="form__message form__message--error">
                 <?php
-                    if($error_number == -1){
+                    if($error_number == 12){
                         echo "Username or Password Invalid";
                     }
                 ?>

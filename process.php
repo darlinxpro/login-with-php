@@ -19,7 +19,7 @@ if(isset($_POST['Login'])){
 }
 
 else {
-    header("Location: index.php?id=-1");
+    header("Location: index.php?id=12");
 }
 }
     
