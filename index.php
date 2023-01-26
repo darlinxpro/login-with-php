@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<?php
-            $servername = "localhost";
-            $username = "root";
-            $pwd = "";
-            $dbname = "users";
+<?php 
 
-            $conn = new mysqli($servername, $username, $pwd, $dbname);
- ?>
+if(isset($_GET['id'])) {
+    $error_number = $_GET['id'];
+}
+else {
+    $error_number = 0;
+}
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Document</title>
+    <title>Documphp ent</title>
 </head>
 <body>
     <div class="container">
         <!--  Login Master  -->
         <form class="form" id="login" method="POST" action="test.php">
             <h1 class="form__title">Login</h1>
-            <div class="form__message form__message--error"></div>
+            <div class="form__message form__message--error">
+                <?php
+                    if($error_number == -1){
+                        echo "Username or Password Invalid";
+                    }
+                ?>
+            </div>
             <div class="form__input-group">
                 <input type="text" class="form__input" name="username" autofocus placeholder="Username or Email">
                 <div class="form__input-error-message"></div>
