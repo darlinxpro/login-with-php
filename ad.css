@@ -1,0 +1,56 @@
+body {
+    background-color: #000;
+    color: bisque;
+}
+
+.container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 1fr 1fr;
+    grid-template-areas:
+        "header header"
+        "left right"
+        "bottom bottom";
+    height: 95vh;
+}
+
+.top {
+    grid-area: header;
+    max-height: 50px;
+}
+
+.cred {
+    grid-area: left;
+    background-color: black;
+    border: 1px solid #fff;
+    max-height: 50vh;
+}
+
+table {
+    border: 1px solid #fff;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: center;
+}
+
+td {
+    border: 1px solid #fff;
+    padding: 5px;
+}
+
+.vent2 {
+    grid-area: right;
+    background-color: black;
+    border: 1px solid #fff;
+}
+
+.vent3 {
+    grid-area: bottom;
+    background-color: black;
+    border: 1px solid #fff;
+}

@@ -15,7 +15,7 @@ else {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>Documphp ent</title>
+    <title>Documento</title>
 </head>
 <body>
     <div class="container">
@@ -30,11 +30,11 @@ else {
                 ?>
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" name="username" autofocus placeholder="Username or Email">
+                <input type="text" class="form__input" name="username1" autofocus placeholder="Username or Email">
                 <div class="form__input-error-message"></div>
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input" name="pwd" autofocus placeholder="password">
+                <input type="password" class="form__input" name="pwd3" autofocus placeholder="password">
                 <div class="form__input-error-message"></div>
             </div>
             <button class="form__button" type="submit" name="Login">Continue</button>
@@ -48,28 +48,28 @@ else {
         </form>
         
         <!--  Create New Acc Master  -->
-        <form class="form form--hidden" id="createAccount">
+        <form class="form form--hidden" id="createAccount" method="POST" action="process.php">
             <h1 class="form__title">Register</h1>
 
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+                <input type="text" id="signupUsername" class="form__input" name="username" autofocus placeholder="Username">
                 <div class="form__input-error-message"></div>
             </div>            
             
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Email Address">
+                <input type="text" class="form__input" name="email" autofocus placeholder="Email Address">
                 <div class="form__input-error-message"></div>
             </div>
 
             <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Password">
+                <input type="password" class="form__input" name="pwd1" autofocus placeholder="Password">
                 <div class="form__input-error-message"></div>
-                <input type="password" class="form__input" autofocus placeholder="Confirm Password">
+                <input type="password" class="form__input" name="pwd2" autofocus placeholder="Confirm Password">
                 <div class="form__input-error-message"></div>
             </div>
 
-            <button class="form__button" type="submit">Continue</button>
+            <button class="form__button" type="submit" name="Register">Continue</button>
 
             <p class="form__text">
                 <a class="form__link" href="/" id="linkLogin">Do you have an Account? Sign In</a>
