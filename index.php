@@ -3,9 +3,15 @@
 $hidden = "form--hidden";
 if(isset($_GET['id'])) {
     $error_number = $_GET['id'];
+    if(isset($_GET['e'])){
+        $e = $_GET['e'];
+    } else {
+        $e = 0;
+    }
 }
 else {
     $error_number = 0;
+
 }
 
 ?>
@@ -65,26 +71,61 @@ else {
 
             <div class="form__message form__message--error">
             <?php
-                if($error_number == 13){
-                    header("Location: index.php?id=2");
+                if($e == 1){
                     echo "Usuario en uso";
                 }
             ?>
             </div>
             <div class="form__input-group">
-                <input type="text" id="signupUsername" class="form__input" name="username" autofocus placeholder="Username">
-                <div class="form__input-error-message"></div>
+                <input type="text" id="signupUsername" class="form__input 
+                <?php 
+                if($e == 1){
+                    echo "form__input--error";
+                } 
+                ?>
+                " name="username" autofocus placeholder="Username">
+                <div class="form__input-error-message">
+                <?php
+                    if($e == 2){
+                        echo "Este Correo ha sido utilizado";
+                    }
+                ?>
+                </div>
             </div>            
             
             <div class="form__input-group">
-                <input type="text" class="form__input" name="email" autofocus placeholder="Email Address">
-                <div class="form__input-error-message"></div>
+                <input type="text" class="form__input
+                <?php
+                    if($e == 2){
+                      echo " form__input--error";
+                    }
+                ?>
+                " name="email" autofocus placeholder="Email Address">
+                <div class="form__input-error-message">
+                <?php
+                if($e == 3){
+                    echo "Las Credenciales no coinciden";
+                }
+                ?>
+                </div>
             </div>
 
             <div class="form__input-group">
-                <input type="password" class="form__input" name="pwd1" autofocus placeholder="Password">
+                <input type="password" class="form__input
+            <?php
+                if($e == 3){
+                    echo "form__input--error";
+                }
+            ?>
+                " name="pwd1" autofocus placeholder="Password">
                 <div class="form__input-error-message"></div>
-                <input type="password" class="form__input" name="pwd2" autofocus placeholder="Confirm Password">
+                <input type="password" class="form__input
+                <?php
+                if($e == 3){
+                    echo "form__input--error";
+                }
+                ?>
+                " name="pwd2" autofocus placeholder="Confirm Password">
                 <div class="form__input-error-message"></div>
             </div>
 

@@ -19,6 +19,11 @@ $conn = new mysqli($servername, $username, $pwd, $dbname);
             session_start();
             $_SESSION['username1'] = $_POST['username1'];
             header("Location: lobby.php");
+        } 
+        // contraseña o usuario invalido
+        else {
+            header("Location: index.php?id=12");
+            exit;
         }
     }
     elseif (isset($_POST['Register'])){
@@ -26,14 +31,16 @@ $conn = new mysqli($servername, $username, $pwd, $dbname);
             $query = "SELECT * FROM user_credentials WHERE name_user='".$_POST['username']."'";
             $result = $conn->query($query);
         
-            if(mysqli_num_rows($result) >= 1) {
-                header("Location: index.php?id=13");
+            if(mysqli_num_rows($result) > 0) {
+                // username en uso
+                header("Location: index.php?id=2&e=1");
                 exit;
             } else {
                 //buscar disponibilidad del email
-                $sql = "SELECT * FROM user_credentials WHERE name_user='".$_POST['username']."'";
+                $sql = "SELECT * FROM user_credentials WHERE email_user='".$_POST['email']."'";
+                $result = $conn->query($query);
         
-                if(mysqli_num_rows($result) === 0) {
+                if(mysqli_num_rows($result) < 1) {
                     $user = $_POST['username'];
                     $email = $_POST['email'];
                     $pwd1 = $_POST['pwd1'];
@@ -51,10 +58,17 @@ $conn = new mysqli($servername, $username, $pwd, $dbname);
                             echo "Error" . $sql . "<br>" . $conn->error;
                         }
                     
-                } else {
-                    header("Location: index.php?id=14");
+                } 
+                //pwd no coincide
+                else {
+                    header("Location: index.php?id=2&e=3");
                     exit;
                     }
+                } 
+                // si ya hay un email
+                else {
+                    header("Location: index.php?id=2&e=2");
+                    exit;
                 }
             }
     }
