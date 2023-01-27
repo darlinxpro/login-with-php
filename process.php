@@ -21,8 +21,7 @@ $conn = new mysqli($servername, $username, $pwd, $dbname);
             header("Location: lobby.php");
         }
     }
-    else {
-        if(isset($_POST['Register'])){
+    elseif (isset($_POST['Register'])){
             //validar disponibilidad del usuario
             $query = "SELECT * FROM user_credentials WHERE name_user='".$_POST['username']."'";
             $result = $conn->query($query);
@@ -58,13 +57,11 @@ $conn = new mysqli($servername, $username, $pwd, $dbname);
                     }
                 }
             }
-        }
-        else {
-            header("Location: index.php?id=12");
-            exit;
-        }
     }
-
+    else {
+        header("Location: index.php?id=12");
+        exit;
+    }
 $conn->close();
 
 ?>

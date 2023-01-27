@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-
+$hidden = "form--hidden";
 if(isset($_GET['id'])) {
     $error_number = $_GET['id'];
 }
@@ -20,7 +20,13 @@ else {
 <body>
     <div class="container">
         <!--  Login Master  -->
-        <form class="form" id="login" method="POST" action="process.php">
+        <form class="form 
+        <?php 
+            if($error_number == 2){
+                echo $hidden;
+            }
+        ?>
+        " id="login" method="POST" action="process.php">
             <h1 class="form__title">Login</h1>
             <div class="form__message form__message--error">
                 <?php
@@ -42,16 +48,29 @@ else {
                 <a href="#" class="form__link">Forgot your password</a>
             </p>
             <p class="form__text">
-                <a class="form__link" href="/" id="linkCreateAccount">Don't have an account</a>
+                <a class="form__link" href="index.php?id=2" name="linkCreateAccount" id="linkCreateAccount">Don't have an account</a>
             </p>
 
         </form>
         
         <!--  Create New Acc Master  -->
-        <form class="form form--hidden" id="createAccount" method="POST" action="process.php">
+        <form class="form
+        <?php
+            if($error_number != 2){
+                echo $hidden;
+            }
+        ?>
+        " id="createAccount" method="POST" action="process.php">
             <h1 class="form__title">Register</h1>
 
-            <div class="form__message form__message--error"></div>
+            <div class="form__message form__message--error">
+            <?php
+                if($error_number == 13){
+                    header("Location: index.php?id=2");
+                    echo "Usuario en uso";
+                }
+            ?>
+            </div>
             <div class="form__input-group">
                 <input type="text" id="signupUsername" class="form__input" name="username" autofocus placeholder="Username">
                 <div class="form__input-error-message"></div>
@@ -72,10 +91,9 @@ else {
             <button class="form__button" type="submit" name="Register">Continue</button>
 
             <p class="form__text">
-                <a class="form__link" href="/" id="linkLogin">Do you have an Account? Sign In</a>
+                <a class="form__link" href="index.php" id="linkLogin">Do you have an Account? Sign In</a>
             </p>
         </form>
     </div>
-    <script src="./main.js"></script>
 </body>
 </html>
